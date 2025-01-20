@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Announcements</title>
+  <link rel="stylesheet" href="Global_Announce.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="icon-content">
+        <div><a href="home_page.html">menu</a></div>
+        <div><a href="profile.html">Profile</a></div>
+        <div><a href="file.html">Files</a></div>
+        <div><a href="Notification.html">Notification</a></div>
+        <div><a href="Global_Announce.html" class="active">Global announcement</a></div>
+        <div>><a href="setting.html">Settings</a></div>
+        <div><a href="help.html">Help</a></div>
+      </div>
+    </aside>
+    <main>
+      <header>
+        <h2>Global Announcements</h2>
+      </header>
+      <div class="tabs">
+        <button class="tab active" onclick="showTab('current')">Current</button>
+        <button class="tab" onclick="showTab('recent')">Recent</button>
+      </div>
+      <div id="current" class="tab-content active">
+        <h2>Active Announcements</h2>
+        <div class="no-announcements">
+          <p>No announcement to display</p>
+        </div>
+      </div>
+      <div id="recent" class="tab-content">
+        <h2>Recent Announcements</h2>
+        <p>No recent announcements to display.</p>
+      </div>
+      <button class="load-more" onclick="loadMoreAnnouncements()">Load More</button>
+    </main>
+  </div>
+  <script src="Global_Announce.js"></script>
+</body>
+</html>

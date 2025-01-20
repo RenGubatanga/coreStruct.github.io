@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f4ef;
+  }
+
+  .navbar{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #d9a066;
+  }
+
+  .navbar .logo{
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+  }
+
+  .navbar .nav-links a{
+    margin: 0px 10px;
+    text-decoration:none;
+    font-size:16px;
+    color: #000;
+  }
+
+  .navbar .nav-links a:hover{
+    text-decoration:underline;
+  }
+
+  .login-btn {
+    background-color: #6f4c27;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login-btn:hover {
+    background-color: #553a1c;
+  }
+
+  .maincontent{
+    display: flex;
+    margin: 50px;
+    justify-content: space-between;
+  }
+
+  .text-content{
+    width:500px;
+    border-style:none;
+    margin-left: 150px;
+    margin-top: 100px;
+  }
+
+  .text-content h1{
+    text-align: left;
+  }
+
+  .text-content .text-content-button{
+    display: flex;
+    text-align:center;
+    margin: 50px;
+  }
+
+  .text-content .text-content-button .button1 button{
+    margin-left: 50px;
+    background-color: #6f4c27;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .text-content .text-content-button .button2 button{
+    margin-left: 50px;
+    background-color: rgb(253, 153, 0);
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  img{
+    width:500px;
+    height:500px;
+    margin-right: 150px;
+  }

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Course Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="Course.css"/>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li><a href="home_page.html">Homepage</a></li>
+            <li><a href="#">Account</a></li>
+            <li><a href="Course.css">Course</a></li>
+            <li><a href="inbox.html">Inbox</a></li>
+            <li><a href="Calender.html">Calendar</a></li>
+            <li><a href="HelpMenu.html">Help</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="profile.html">Home</a></li>
+        </ul>
+    </div>
+  </nav>
+  
+  <div class="dashboard">
+      <header class="header">
+        <button class="menu-btn" onclick="toggleMenu()">&#9776;</button>
+        <div class="course-info">
+          <h1>Course Name</h1>
+          <p>Prof Name</p>
+        </div>
+      </header>
+      
+      <nav class="tabs">
+        <button class="tab-button active" data-tab="announcements">Announcements</button>
+        <button class="tab-button" data-tab="module">Module</button>
+        <button class="tab-button" data-tab="activities">Activities</button>
+      </nav>
+      
+      <main>
+        <section id="announcements" class="tab-content active">
+          <div class="card">
+            <h3>Prof Name</h3>
+            <p>Date and time Published</p>
+            <p>Announcement here</p>
+            <button class="options-btn" onclick="toggleOptionsMenu(event)">⋮</button>
+            <div class="options-menu">
+              <button onclick="editCard(event)">Edit</button>
+              <button onclick="deleteCard(event)">Delete</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="module" class="tab-content">
+          <div class="card">
+            <h3>Module Name</h3>
+            <p>Date and time Published</p>
+            <p>Add Class Comment</p>
+            <button class="options-btn" onclick="toggleOptionsMenu(event)">⋮</button>
+            <div class="options-menu">
+              <button onclick="editCard(event)">Edit</button>
+              <button onclick="deleteCard(event)">Delete</button>
+            </div>
+          </div>
+        </section>
+        
+        <section id="activities" class="tab-content">
+          <div class="card">
+            <h3>Mikay Arciga</h3>
+            <p>Date Published</p>
+            <p>Due Date: Dec 5, 11:59 PM</p>
+            <button class="options-btn" onclick="toggleOptionsMenu(event)">⋮</button>
+            <div class="options-menu">
+              <button onclick="editCard(event)">Edit</button>
+              <button onclick="deleteCard(event)">Delete</button>
+            </div>
+          </div>
+        </section>
+      </main>
+  </div>
+
+  <script src="Course.js"></script>
+</body>
+</html>

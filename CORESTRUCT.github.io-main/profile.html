@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="icon-content">
+                <div><a href="home_page.html">menu</a></div>
+                <div><a href="profile.html">Profile</a></div>
+                <div><a href="file.html">Files</a></div>
+                <div><a href="Notification.html">Notification</a></div>
+                <div><a href="Global_Announce.html">Global announcement</a></div>
+                <div><a href="setting.html">Settings</a></div>
+                <div><a href="help.html">Help</a></div>
+            </div>
+        </aside>
+
+        <main>
+            <header>
+                <h2>Profile</h2>
+            </header>
+            <section class="profile-section">
+                <div class="profile-card">
+                    <div class="profile-image"></div>
+                    <div class="profile-details">
+                        <!-- Display user name from localStorage -->
+                        <h2 id="userName">Name</h2>
+                        <p id="userEmail">Email</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="info-section">
+                    <h3>Contact</h3>
+                    <p>No registered services, you can add some on the settings page</p>
+                    <h3>Biography</h3>
+                    <p>No biography has been added</p>
+                    <h3>Links</h3>
+                    <p>No links have been added</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Retrieve the logged-in user's data from localStorage
+        const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+        if (loggedInUser) {
+            // Display user info on the profile page
+            document.getElementById('userName').textContent = loggedInUser.name;
+            document.getElementById('userEmail').textContent = loggedInUser.email;
+        } else {
+            // Redirect to login page if no user is logged in
+            window.location.href = "login.html"; // Ensure this path is correct
+        }
+    </script>
+</body>
+</html>

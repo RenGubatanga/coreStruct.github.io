@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #eb8100;
+    color: #333;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: white;
+  }
+  
+  .menu-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: white;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+  
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .calendar-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .calendar-controls button {
+    background-color: #f4a261;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .calendar-controls .view-options {
+    margin-left: auto;
+    display: flex;
+    gap: 5px;
+  }
+  
+  .view-btn.active {
+    background-color: #e76f51;
+  }
+  
+  .calendar-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  #calendar {
+    flex: 3;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .calendar-feed {
+    flex: 1;
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .calendar-feed h2 {
+    margin-top: 0;
+  }
+  
+  #calendar table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
+  
+  #calendar th,
+  #calendar td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  #calendar th {
+    background-color: #f4a261;
+    color: white;
+  }
+  /* Highlight the current date */
+  .today {
+    background-color: #ffdf00; /* Yellow background */
+    color: white;
+    font-weight: bold;
+    border-radius: 10%;
+  }
