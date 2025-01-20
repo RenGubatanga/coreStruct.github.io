@@ -78,6 +78,54 @@
         </main>
     </div>
 
-    <script src="setting.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const fullNameInput = document.getElementById('full-name');
+            const emailInput = document.getElementById('email-address');
+            const contactInput = document.getElementById('contact');
+            const biographyInput = document.getElementById('biography');
+            const linksInput = document.getElementById('links');
+            const activityLoggingCheckbox = document.getElementById('activity-logging');
+            const saveChangesBtn = document.getElementById('save-changes-btn');
+
+            // Retrieve the logged-in user from localStorage
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+            // If logged-in user exists, populate the fields with their current information
+            if (loggedInUser) {
+                fullNameInput.value = loggedInUser.name || '';
+                emailInput.value = loggedInUser.email || '';
+                contactInput.value = loggedInUser.contact || '';
+                biographyInput.value = loggedInUser.biography || '';
+                linksInput.value = loggedInUser.links || '';
+                activityLoggingCheckbox.checked = loggedInUser.activityLogging || false;
+            }
+
+            // Handle saving the updated changes to localStorage
+            saveChangesBtn.addEventListener('click', () => {
+                const updatedUser = {
+                    name: fullNameInput.value.trim(),
+                    email: emailInput.value.trim(),
+                    contact: contactInput.value.trim(),
+                    biography: biographyInput.value.trim(),
+                    links: linksInput.value.trim(),
+                    activityLogging: activityLoggingCheckbox.checked
+                };
+
+                // Validate the name and email fields
+                if (updatedUser.name === "" || updatedUser.email === "") {
+                    alert("Name and Email are required fields.");
+                    return;
+                }
+
+                // Save the updated user data back to localStorage
+                localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
+
+                alert("Changes saved successfully!");
+                // Redirect the user to the profile page to see the updated profile
+                window.location.href = "profile.html";
+            });
+        });
+    </script>
 </body>
 </html>

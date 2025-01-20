@@ -87,3 +87,5 @@ function resetForm() {
   authForm.reset();
   errorMessage.style.display = "none";
 }
+
+const year = document.getElementById("year") ? document.getElementById("year").value.trim() : '';

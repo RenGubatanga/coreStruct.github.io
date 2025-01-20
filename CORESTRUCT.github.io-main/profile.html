@@ -38,7 +38,6 @@
                 </div>
                 <hr>
                 <div class="info-section">
-                  
                     <h3>Biography</h3>
                     <p id="userBiography">No biography added</p>
                     <h3>Links</h3>
@@ -49,22 +48,23 @@
     </div>
 
     <script>
-        // Retrieve the logged-in user's data from localStorage
-        const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+        document.addEventListener('DOMContentLoaded', () => {
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
-        if (loggedInUser) {
-            // Display user info on the profile page
-            document.getElementById('userName').textContent = loggedInUser.name;
-            document.getElementById('userEmail').textContent = loggedInUser.email;
-            document.getElementById('userCourse').textContent = loggedInUser.course || 'No course information added';
-            document.getElementById('userYear').textContent = loggedInUser.year || 'No year information added';
-            document.getElementById('userContact').textContent = loggedInUser.contact || 'No contact information added';
-        } else {
-            // Redirect to login page if no user is logged in
-            window.location.href = "login.html";
-        }
-        document.getElementById('userContact').textContent = loggedInUser.contact || 'No contact information added';
-
+            if (loggedInUser) {
+                // Display user info on the profile page
+                document.getElementById('userName').textContent = loggedInUser.name;
+                document.getElementById('userEmail').textContent = loggedInUser.email;
+                document.getElementById('userCourse').textContent = loggedInUser.course || 'No course information added';
+                document.getElementById('userYear').textContent = loggedInUser.year || 'No year information added';
+                document.getElementById('userContact').textContent = loggedInUser.contact || 'No contact information added';
+                document.getElementById('userBiography').textContent = loggedInUser.biography || 'No biography added';
+                document.getElementById('userLinks').textContent = loggedInUser.links || 'No links added';
+            } else {
+                // Redirect to login page if no user is logged in
+                window.location.href = "login.html";
+            }
+        });
     </script>
 </body>
 </html>
