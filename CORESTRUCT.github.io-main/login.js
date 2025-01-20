@@ -37,10 +37,13 @@ actionBtn.addEventListener("click", () => {
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
+  const course = document.getElementById("course") ? document.getElementById("course").value.trim() : '';
+  const year = document.getElementById("year") ? document.getElementById("year").value.trim() : '';
+  const contact = document.getElementById("contact") ? document.getElementById("contact").value.trim() : '';
 
   if (isSignup) {
     // Sign up logic
-    if (name === "" || email === "" || password === "") {
+    if (name === "" || email === "" || password === "" || course === "" || year === "" || contact === "") {
       showError("All fields are required.");
       return;
     }
@@ -49,7 +52,7 @@ actionBtn.addEventListener("click", () => {
     if (userExists) {
       showError("Email is already registered.");
     } else {
-      const newUser = { name, email, password };
+      const newUser = { name, email, password, course, year, contact };
       users.push(newUser);
       // Save user data to localStorage
       localStorage.setItem('loggedInUser', JSON.stringify(newUser));

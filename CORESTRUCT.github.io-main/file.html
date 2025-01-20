@@ -11,13 +11,14 @@
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="icon-content">
-         <div><a href="home_page.html">menu</a></div>
+        <div><a href="home_page.html">menu</a></div>
         <div><a href="profile.html">Profile</a></div>
         <div><a href="file.html">Files</a></div>
         <div><a href="Notification.html">Notification</a></div>
-        <div><a href="Global_Announce.html">Global Announcement</a></div>
+        <div><a href="Global_Announce.html">Global announcement</a></div>
         <div><a href="setting.html">Settings</a></div>
         <div><a href="help.html">Help</a></div>
+        <div><a href="index.html">LogOut</a></div>
       </div>
     </aside>
 
@@ -27,8 +28,8 @@
         <h1>Files</h1>
       </header>
       <div class="toolbar">
-        <button class="btn">+ Upload</button>
-        <button class="btn">+ Folder</button>
+        <button class="btn" id="upload-btn">+ Upload</button>
+        <button class="btn" id="folder-btn">+ Folder</button>
         <input type="text" class="search-bar" placeholder="Search for files">
       </div>
 
@@ -43,10 +44,35 @@
           </ul>
         </div>
         <div class="file-table">
-          <table>
+          <table id="file-table">
             <thead>
               <tr>
                 <th>Name</th>
                 <th>Date Created</th>
                 <th>Date Modified</th>
-           
+                <th>Modified By</th>
+                <th>Size</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Files will be listed here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- File Upload Modal -->
+  <div id="upload-modal" class="upload-modal">
+    <div class="modal-content">
+      <span class="close-btn" id="close-modal">&times;</span>
+      <h2>Upload File</h2>
+      <input type="file" id="file-input">
+      <button class="btn" id="submit-upload">Upload</button>
+    </div>
+  </div>
+
+  <script src="file.js"></script>
+</body>
+</html>

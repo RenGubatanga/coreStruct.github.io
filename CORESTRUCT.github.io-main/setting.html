@@ -17,6 +17,7 @@
                 <div><a href="Global_Announce.html">Global announcement</a></div>
                 <div><a href="setting.html" class="active">Settings</a></div>
                 <div><a href="help.html">Help</a></div>
+                <div><a href="index.html">LogOut</a></div>
             </div>
         </aside>
 
@@ -26,30 +27,57 @@
             </header>
 
             <div class="content-box">
+                <!-- Full Name -->
                 <div class="section">
                     <h2>Full Name</h2>
+                    <input type="text" id="full-name" placeholder="Enter your full name">
+                </div>
+
+                <!-- Email -->
+                <div class="section">
                     <h2>Email</h2>
-                    <h2>Block Users</h2>
+                    <input type="email" id="email-address" placeholder="Enter your email address">
+                </div>
+
+                <!-- Contact -->
+                <div class="section">
+                    <h2>Contact</h2>
+                    <input type="text" id="contact" placeholder="Enter your contact info">
+                </div>
+
+                <!-- Biography -->
+                <div class="section">
+                    <h2>Biography</h2>
+                    <textarea id="biography" placeholder="Write your biography"></textarea>
+                </div>
+
+                <!-- Links -->
+                <div class="section">
+                    <h2>Links</h2>
+                    <input type="text" id="links" placeholder="Enter your links">
+                </div>
+
+                <!-- Activity Logging -->
+                <div class="section">
                     <h2>Activity Logging</h2>
-                    <h2>Account Deletion</h2>
+                    <label for="activity-logging">Enable Activity Logging</label>
+                    <input type="checkbox" id="activity-logging">
                 </div>
 
+                <!-- Account Deletion -->
                 <div class="section">
-                    <h2>Email Address</h2>
-                    <p>Option to update email address</p>
+                    <button id="delete-account-btn">Permanently Delete Account</button>
+                    <p id="delete-warning" style="color: red; display: none;">This action cannot be undone.</p>
                 </div>
 
+                <!-- Save Changes -->
                 <div class="section">
-                    <h2>Blocked Users</h2>
-                    <p>Block/Unblock users</p>
-                </div>
-
-                <div class="section">
-                    <h2>Account Deletion</h2>
-                    <p>Permanently delete the account with all associated data</p>
+                    <button id="save-changes-btn">Save Changes</button>
                 </div>
             </div>
         </main>
     </div>
+
+    <script src="setting.js"></script>
 </body>
 </html>

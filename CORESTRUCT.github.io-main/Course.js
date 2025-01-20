@@ -39,3 +39,25 @@ document.addEventListener('DOMContentLoaded', () => {
     alert('Menu toggle functionality to be added');
   };
 });
+// Upload Course Material (Instructor)
+function uploadCourseMaterial(materialName, fileContent) {
+  let courseMaterials = JSON.parse(localStorage.getItem('courseMaterials')) || [];
+  courseMaterials.push({ name: materialName, content: fileContent });
+  localStorage.setItem('courseMaterials', JSON.stringify(courseMaterials));
+  alert('Material uploaded successfully!');
+}
+
+// Download Course Material (Student)
+function downloadCourseMaterial(materialName) {
+  let courseMaterials = JSON.parse(localStorage.getItem('courseMaterials')) || [];
+  let material = courseMaterials.find(item => item.name === materialName);
+  if (material) {
+    console.log(`Downloading ${material.name}: ${material.content}`);
+  } else {
+    alert('Material not found!');
+  }
+}
+
+// Example usage
+uploadCourseMaterial('Math Syllabus', 'Syllabus content goes here...'); // Instructor uploads material
+downloadCourseMaterial('Math Syllabus'); // Student downloads material

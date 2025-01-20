@@ -17,6 +17,7 @@
                 <div><a href="Global_Announce.html">Global announcement</a></div>
                 <div><a href="setting.html">Settings</a></div>
                 <div><a href="help.html">Help</a></div>
+                <div><a href="index.html">LogOut</a></div>
             </div>
         </aside>
 
@@ -28,19 +29,20 @@
                 <div class="profile-card">
                     <div class="profile-image"></div>
                     <div class="profile-details">
-                        <!-- Display user name from localStorage -->
                         <h2 id="userName">Name</h2>
                         <p id="userEmail">Email</p>
+                        <p id="userCourse">Course</p>
+                        <p id="userYear">Year</p>
+                        <p id="userContact">Contact</p>
                     </div>
                 </div>
                 <hr>
                 <div class="info-section">
-                    <h3>Contact</h3>
-                    <p>No registered services, you can add some on the settings page</p>
+                  
                     <h3>Biography</h3>
-                    <p>No biography has been added</p>
+                    <p id="userBiography">No biography added</p>
                     <h3>Links</h3>
-                    <p>No links have been added</p>
+                    <p id="userLinks">No links added</p>
                 </div>
             </section>
         </main>
@@ -54,10 +56,15 @@
             // Display user info on the profile page
             document.getElementById('userName').textContent = loggedInUser.name;
             document.getElementById('userEmail').textContent = loggedInUser.email;
+            document.getElementById('userCourse').textContent = loggedInUser.course || 'No course information added';
+            document.getElementById('userYear').textContent = loggedInUser.year || 'No year information added';
+            document.getElementById('userContact').textContent = loggedInUser.contact || 'No contact information added';
         } else {
             // Redirect to login page if no user is logged in
-            window.location.href = "login.html"; // Ensure this path is correct
+            window.location.href = "login.html";
         }
+        document.getElementById('userContact').textContent = loggedInUser.contact || 'No contact information added';
+
     </script>
 </body>
 </html>
