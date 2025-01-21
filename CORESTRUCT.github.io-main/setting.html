@@ -88,10 +88,9 @@
             const activityLoggingCheckbox = document.getElementById('activity-logging');
             const saveChangesBtn = document.getElementById('save-changes-btn');
 
-            // Retrieve the logged-in user from localStorage
             const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
-            // If logged-in user exists, populate the fields with their current information
+      
             if (loggedInUser) {
                 fullNameInput.value = loggedInUser.name || '';
                 emailInput.value = loggedInUser.email || '';
@@ -101,7 +100,7 @@
                 activityLoggingCheckbox.checked = loggedInUser.activityLogging || false;
             }
 
-            // Handle saving the updated changes to localStorage
+            
             saveChangesBtn.addEventListener('click', () => {
                 const updatedUser = {
                     name: fullNameInput.value.trim(),
@@ -112,17 +111,17 @@
                     activityLogging: activityLoggingCheckbox.checked
                 };
 
-                // Validate the name and email fields
+               
                 if (updatedUser.name === "" || updatedUser.email === "") {
                     alert("Name and Email are required fields.");
                     return;
                 }
 
-                // Save the updated user data back to localStorage
+                
                 localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
 
                 alert("Changes saved successfully!");
-                // Redirect the user to the profile page to see the updated profile
+                
                 window.location.href = "profile.html";
             });
         });

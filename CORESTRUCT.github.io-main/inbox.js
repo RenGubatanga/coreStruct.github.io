@@ -26,10 +26,10 @@ function toggleMenu(event) {
     }
 }
 
-// Function to mark message as read
+
 function markAsRead(event) {
     let messageItem = event.target.closest('.message-item');
-    messageItem.style.backgroundColor = '#f5f5f5'; // Change background color when read
+    messageItem.style.backgroundColor = '#f5f5f5';
     alert('Message marked as read!');
 }
 

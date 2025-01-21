@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="icon-content">
+                <div><a href="home_page.html">menu</a></div>
+                <div><a href="profile.html">Profile</a></div>
+                <div><a href="file.html">Files</a></div>
+                <div><a href="Notification.html">Notification</a></div>
+                <div><a href="Global_Announce.html">Global announcement</a></div>
+                <div><a href="setting.html">Settings</a></div>
+                <div><a href="help.html">Help</a></div>
+                <div><a href="index.html">LogOut</a></div>
+            </div>
+        </aside>
+
+        <main>
+            <header>
+                <h2>Profile</h2>
+            </header>
+            <section class="profile-section">
+                <div class="profile-card">
+                    <div class="profile-image"></div>
+                    <div class="profile-details">
+                        <h2 id="userName">Name</h2>
+                        <p id="userEmail">Email</p>
+                        <p id="userCourse">Course</p>
+                        <p id="userYear">Year</p>
+                        <p id="userContact">Contact</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="info-section">
+                    <h3>Biography</h3>
+                    <p id="userBiography">No biography added</p>
+                    <h3>Links</h3>
+                    <p id="userLinks">No links added</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+            if (loggedInUser) {
+                // Display user info on the profile page
+                document.getElementById('userName').textContent = loggedInUser.name;
+                document.getElementById('userEmail').textContent = loggedInUser.email;
+                document.getElementById('userCourse').textContent = loggedInUser.course || 'No course information added';
+                document.getElementById('userYear').textContent = loggedInUser.year || 'No year information added';
+                document.getElementById('userContact').textContent = loggedInUser.contact || 'No contact information added';
+                document.getElementById('userBiography').textContent = loggedInUser.biography || 'No biography added';
+                document.getElementById('userLinks').textContent = loggedInUser.links || 'No links added';
+            } else {
+                // Redirect to login page if no user is logged in
+                window.location.href = "login.html";
+            }
+        });
+    </script>
+</body>
+</html>

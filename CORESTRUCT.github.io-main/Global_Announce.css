@@ -84,18 +84,25 @@ body {
 main {
     width: 80%;
     flex: 1;
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow-y: auto;
 }
 
 header h2 {
-    font-size: 24px;
-    color: #333;
+    font-size: 28px;
+    font-weight: 600;
+    color: #2d3748;
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 .tabs {
     display: flex;
     gap: 10px;
+    justify-content: center;
     margin-bottom: 20px;
 }
 
@@ -103,17 +110,27 @@ header h2 {
     background-color: #f4a261;
     border: none;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 24px;
     cursor: pointer;
     border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .tab.active {
     background-color: #e76f51;
 }
 
+.tab:hover {
+    background-color: #f4a261;
+    transform: scale(1.05);
+}
+
 .tab-content {
     display: none;
+    padding-top: 20px;
+    border-top: 2px solid #f4a261;
 }
 
 .tab-content.active {
@@ -123,6 +140,7 @@ header h2 {
 .no-announcements {
     text-align: center;
     margin-top: 50px;
+    color: #666;
 }
 
 .no-announcements img {
@@ -131,20 +149,77 @@ header h2 {
 }
 
 .no-announcements p {
-    color: #666;
+    font-size: 1.1rem;
+    color: #888;
 }
 
 .load-more {
     display: block;
     margin-top: 30px;
-    padding: 10px 20px;
+    padding: 12px 24px;
     background-color: #e76f51;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .load-more:hover {
     background-color: #f4a261;
+    transform: scale(1.05);
+}
+
+.load-more:active {
+    background-color: #e07b3b;
+}
+
+/* Delete Button Styling */
+.delete-btn {
+    background-color: #e07b3b; /* Orange color */
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: #d35d1e; /* Darker shade on hover */
+}
+
+.delete-btn:active {
+    background-color: #c55212; /* Even darker shade on active click */
+}
+
+/* Announcement Styling */
+.announcement {
+    background-color: #f9f5f0;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.announcement h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.announcement p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.announcement small {
+    font-size: 14px;
+    color: #888;
 }
