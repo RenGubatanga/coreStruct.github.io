@@ -1,6 +1,3 @@
-// Array to store user data (or use localStorage in real app)
-let users = JSON.parse(localStorage.getItem('users')) || []; // Load from localStorage if users exist
-
 // Elements
 const formTitle = document.getElementById("form-title");
 const actionBtn = document.getElementById("action-btn");
@@ -13,6 +10,9 @@ const authForm = document.getElementById("auth-form");
 // State to toggle between login and signup
 let isSignup = false;
 
+// Load users from localStorage if available
+let users = JSON.parse(localStorage.getItem('users')) || [];
+
 // Toggle between Login and Signup
 toggleLink.addEventListener("click", (e) => {
   e.preventDefault();
@@ -22,25 +22,28 @@ toggleLink.addEventListener("click", (e) => {
     formTitle.textContent = "Create an Account";
     actionBtn.textContent = "Sign Up";
     toggleText.innerHTML = 'Already have an account? <a href="#" id="toggle-link">Log in here</a>';
-    signupFields.style.display = "none"; // Hide signup fields (since we only need email and password)
+    signupFields.style.display = "block";
   } else {
     formTitle.textContent = "Login to your Account";
     actionBtn.textContent = "Login";
     toggleText.innerHTML = 'Don\'t have an account? <a href="#" id="toggle-link">Sign up here</a>';
-    signupFields.style.display = "none"; // Keep it hidden during login
+    signupFields.style.display = "none";
   }
   errorMessage.style.display = "none";
 });
 
 // Handle form submission
 actionBtn.addEventListener("click", () => {
+  const name = document.getElementById("name") ? document.getElementById("name").value.trim() : '';
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
+  const department = document.getElementById("department") ? document.getElementById("department").value.trim() : '';
+  const contact = document.getElementById("contact") ? document.getElementById("contact").value.trim() : '';
 
   if (isSignup) {
-    // Sign up logic
-    if (email === "" || password === "") {
-      showError("Email and password are required.");
+    // Sign up logic: Ensure fields are properly filled
+    if (name === "" || email === "" || password === "" || department === "" || contact === "") {
+      showError("All fields are required.");
       return;
     }
 
@@ -48,10 +51,11 @@ actionBtn.addEventListener("click", () => {
     if (userExists) {
       showError("Email is already registered.");
     } else {
-      const newUser = { email, password };
+      const newUser = { name, email, password, department, contact };
       users.push(newUser);
-      // Save users to localStorage
+      // Save user data to localStorage
       localStorage.setItem('users', JSON.stringify(users));
+      localStorage.setItem('loggedInUser', JSON.stringify(newUser));  // Automatically log in the user
       alert("Account created successfully! You can now log in.");
       resetForm();
       toggleLink.click(); // Switch to login view
@@ -60,15 +64,12 @@ actionBtn.addEventListener("click", () => {
     // Login logic
     const user = users.find((user) => user.email === email && user.password === password);
     if (user) {
-      // Save logged-in user to localStorage
+      // Save user data to localStorage
       localStorage.setItem('loggedInUser', JSON.stringify(user));
-      alert(`Welcome back!`);
-
-      // Reset the form
+      alert(`Welcome back, ${user.name}!`);
       resetForm();
-      
-      // Redirect to the course dashboard (prof_dashboard.html)
-      window.location.href = "prof_DashBoard.html";
+      // Redirect to profile page (or specific professor dashboard)
+      window.location.href = "prof_profile.html";
     } else {
       showError("Invalid email or password.");
     }
