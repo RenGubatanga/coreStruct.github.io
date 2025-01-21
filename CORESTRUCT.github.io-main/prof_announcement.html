@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Announcements Page</title>
+  <link rel="stylesheet" href="prof_announcement.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <ul>
+        <li><a href="prof_DashBoard.html">Dashboard</a></li>
+        <li><a href="announcement.html">Announcement</a></li>
+      </ul>
+    </aside>
+
+    <main class="content">
+      <header>
+        <h1>Announcements</h1>
+        <button class="add-new-btn" onclick="openPopup()">+ Add New Announcement</button>
+      </header>
+      
+      <div class="announcement-list">
+        <div class="announcement">
+          <h2>New Course Updates</h2>
+          <p>We have new updates for the course, please check the syllabus page.</p>
+          <small>Posted on: 2025-01-20</small>
+        </div>
+
+        <div class="announcement">
+          <h2>Exam Schedule Released</h2>
+          <p>The exam schedule for the next semester is now available on the portal.</p>
+          <small>Posted on: 2025-01-19</small>
+        </div>
+      </div>
+
+      <!-- Popup for adding a new announcement -->
+      <div id="announcementPopup" class="popup">
+        <div class="popup-content">
+          <span class="close" onclick="closePopup()">&times;</span>
+          <h3>Create New Announcement</h3>
+          <form id="announcementForm">
+            <input type="text" name="subject" placeholder="Subject" required>
+            <textarea name="description" placeholder="Description" required></textarea>
+            <input type="file" name="file">
+            <button type="submit">Add Announcement</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="prof_announcement.js"></script>
+</body>
+</html>
