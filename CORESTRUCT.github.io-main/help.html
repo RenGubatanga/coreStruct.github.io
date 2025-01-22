@@ -10,13 +10,13 @@
     <div class="container">
         <aside class="sidebar">
             <div class="icon-content">
-                <div><a href="home_page.html">menu</a></div>
+                <div><a href="Course.html">Dashboard</a></div>
                 <div><a href="profile.html">Profile</a></div>
                 <div><a href="file.html">Files</a></div>
                 <div><a href="Notification.html">Notification</a></div>
                 <div><a href="Global_Announce.html">Global announcement</a></div>
                 <div><a href="setting.html">Settings</a></div>
-                <div><a href="help.html">Help</a></div>
+                <div><a href="help.html" class="active">Help</a></div>
                 <div><a href="index.html">LogOut</a></div>
             </div>
         </aside>
@@ -29,10 +29,11 @@
                         <h2>How can we help?</h2>
                         <p>Find answers to common questions</p>
                         <div class="search-box">
-                            <input type="text" placeholder="Search here">
+                            <input type="text" id="searchInput" placeholder="Search here" onkeyup="showSuggestions()">
                         </div>
+                        <div id="suggestions" class="suggestions-box"></div>
                         <div class="links">
-                            <a href="#">Ask your instructor a Question</a>
+                            <a href="#" id="askQuestionLink">Ask your instructor a Question</a>
                             <a href="#">Report a Problem</a>
                         </div>
                     </div>
@@ -40,5 +41,56 @@
             </section>
         </main>
     </div>
+
+    <script>
+        function showSuggestions() {
+            const searchInput = document.getElementById('searchInput');
+            const suggestionsDiv = document.getElementById('suggestions');
+
+            const mockSuggestions = [
+                "How to update profile?",
+                "How to upload files?",
+                "How to set notifications?",
+                "How to report a problem?"
+            ];
+
+            const searchText = searchInput.value.toLowerCase();
+            const filteredSuggestions = mockSuggestions.filter(suggestion => 
+                suggestion.toLowerCase().includes(searchText)
+            );
+
+            // Clear previous suggestions
+            suggestionsDiv.innerHTML = '';
+
+            // Show filtered suggestions
+            filteredSuggestions.forEach(suggestion => {
+                const suggestionDiv = document.createElement('div');
+                suggestionDiv.textContent = suggestion;
+                suggestionsDiv.appendChild(suggestionDiv);
+            });
+
+            // Display or hide suggestions
+            suggestionsDiv.style.display = filteredSuggestions.length > 0 ? 'block' : 'none';
+        }
+
+        // Simulate asking a question
+        document.getElementById('askQuestionLink').addEventListener('click', function(event) {
+            event.preventDefault();
+            const question = prompt('Please enter your question:');
+            if (question) {
+                // Store the question in localStorage (simulate sending it to the professor)
+                const professorQuestions = JSON.parse(localStorage.getItem('professorQuestions')) || [];
+                professorQuestions.push({ userQuestion: question, answered: false });
+                localStorage.setItem('professorQuestions', JSON.stringify(professorQuestions));
+
+                // Store the question in the user's question history (optional)
+                const userQuestions = JSON.parse(localStorage.getItem('userQuestions')) || [];
+                userQuestions.push({ userQuestion: question });
+                localStorage.setItem('userQuestions', JSON.stringify(userQuestions));
+
+                alert('Your question has been sent to the professor.');
+            }
+        });
+    </script>
 </body>
 </html>

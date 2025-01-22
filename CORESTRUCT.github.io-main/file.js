@@ -13,23 +13,27 @@ document.getElementById('submit-upload').addEventListener('click', () => {
     const fileInput = document.getElementById('file-input');
     const file = fileInput.files[0];
     if (file) {
-        // Get the file details
-        const fileName = file.name;
-        const fileSize = file.size;
-        const fileDateCreated = new Date().toLocaleString();
-        const fileDateModified = new Date().toLocaleString();
-        const modifiedBy = "User"; // Modify this as needed
-  
-        // Store the file in localStorage (for demo purposes)
-        let files = JSON.parse(localStorage.getItem('uploadedFiles')) || [];
-        files.push({ fileName, fileSize, fileDateCreated, fileDateModified, modifiedBy });
-        localStorage.setItem('uploadedFiles', JSON.stringify(files));
-  
-        // Add file to the table
-        addFileToTable({ fileName, fileSize, fileDateCreated, fileDateModified, modifiedBy });
-  
-        // Close the modal
-        document.getElementById('upload-modal').style.display = 'none';
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            const fileContent = event.target.result; // Base64 string
+            const fileName = file.name;
+            const fileSize = file.size;
+            const fileDateCreated = new Date().toLocaleString();
+            const fileDateModified = new Date().toLocaleString();
+            const modifiedBy = "User"; // Modify this as needed
+
+            // Store the file details in localStorage
+            let files = JSON.parse(localStorage.getItem('uploadedFiles')) || [];
+            files.push({ fileName, fileSize, fileDateCreated, fileDateModified, modifiedBy, fileContent });
+            localStorage.setItem('uploadedFiles', JSON.stringify(files));
+
+            // Add file to the table
+            addFileToTable({ fileName, fileSize, fileDateCreated, fileDateModified, modifiedBy, fileContent });
+
+            // Close the modal
+            document.getElementById('upload-modal').style.display = 'none';
+        };
+        reader.readAsDataURL(file);
     }
 });
   
@@ -43,7 +47,10 @@ function addFileToTable(file) {
       <td>${file.fileDateModified}</td>
       <td>${file.modifiedBy}</td>
       <td>${(file.fileSize / 1024).toFixed(2)} KB</td>
-      <td><button class="delete-btn">Delete</button></td>
+      <td>
+        <button class="download-btn">Download</button>
+        <button class="delete-btn">Delete</button>
+      </td>
     `;
     tbody.appendChild(row);
 
@@ -51,6 +58,21 @@ function addFileToTable(file) {
     row.querySelector('.delete-btn').addEventListener('click', () => {
         deleteFile(file);
     });
+
+    // Add event listener to download button
+    row.querySelector('.download-btn').addEventListener('click', () => {
+        downloadFile(file);
+    });
+}
+
+// Download file from table
+function downloadFile(file) {
+    const link = document.createElement('a');
+    link.href = file.fileContent; // Base64 or Blob URL
+    link.download = file.fileName; // Filename for download
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
   
 // Delete file
@@ -76,5 +98,9 @@ function deleteFile(file) {
 // Load files from localStorage when the page loads
 window.addEventListener('load', () => {
     const files = JSON.parse(localStorage.getItem('uploadedFiles')) || [];
-    files.forEach(file => addFileToTable(file));
+    files.forEach(file => {
+        if (file.fileContent) {
+            addFileToTable(file);
+        }
+    });
 });

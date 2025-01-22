@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor Notification</title>
+    <link rel="stylesheet" href="prof_notification.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="prof_DashBoard.html">Dashboard</a></li>
+                <li><a href="prof_profile.html">Profile</a></li>
+                <li><a href="prof_announcement.html">Announcement</a></li>
+                <li><a href="prof_notification.html" class="active">Notification</a></li>
+                <li><a href="prof_setting.html">Setting</a></li>
+                <li><a href="index.html">Log Out</a></li>
+            </ul>
+        </aside>
+
+        <main>
+            <header>
+                <h2>Professor Notification</h2>
+            </header>
+            <section class="notification-section">
+                <div class="notification-box" id="questionBox">
+                    <!-- The question will be loaded here -->
+                </div>
+                <div class="reply-box">
+                    <textarea id="replyText" placeholder="Write your reply here"></textarea>
+                    <button onclick="sendReply()">Send Reply</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const professorQuestions = JSON.parse(localStorage.getItem('professorQuestions')) || [];
+
+            // If there is a new question (that hasn't been answered yet), show it
+            if (professorQuestions.length > 0 && !professorQuestions[0].answered) {
+                const question = professorQuestions[0].userQuestion;
+                document.getElementById('questionBox').innerHTML = `<p><strong>Question:</strong> ${question}</p>`;
+            } else {
+                document.getElementById('questionBox').innerHTML = "<p>No new questions.</p>";
+            }
+        };
+
+        function sendReply() {
+            const replyText = document.getElementById('replyText').value;
+            if (replyText) {
+                const professorQuestions = JSON.parse(localStorage.getItem('professorQuestions')) || [];
+                if (professorQuestions.length > 0) {
+                    professorQuestions[0].answered = true; // Mark question as answered
+                    professorQuestions[0].professorReply = replyText; // Save the professor's reply
+                    localStorage.setItem('professorQuestions', JSON.stringify(professorQuestions));
+
+                    // Notify the user on the help page
+                    alert('Reply sent! The user will be notified.');
+
+                    // Send the reply back to the help page (simulate)
+                    const userQuestions = JSON.parse(localStorage.getItem('userQuestions')) || [];
+                    userQuestions[userQuestions.length - 1].professorReply = replyText; // Update the last question with the reply
+                    localStorage.setItem('userQuestions', JSON.stringify(userQuestions));
+
+                    // Clear the reply input field
+                    document.getElementById('replyText').value = '';
+
+                    // Optionally, redirect back to help page or stay
+                    window.location.href = 'help.html';  // Redirect to help page
+                }
+            } else {
+                alert('Please write a reply.');
+            }
+        }
+    </script>
+</body>
+</html>

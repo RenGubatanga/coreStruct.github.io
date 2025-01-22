@@ -10,9 +10,11 @@
     <div class="container">
         <aside class="sidebar">
             <ul>
-                <li><a href="profile.html" class="active">Profile</a></li>
+                <li><a href="prof_profile.html" class="active">Profile</a></li>
                 <li><a href="prof_DashBoard.html">Dashboard</a></li>
                 <li><a href="prof_announcement.html">Announcement</a></li>
+                <li><a href="prof_notification.html">Notification</a></li>
+                <li><a href="prof_setting.html">Setting</a></li>
                 <li><a href="index.html">Log Out</a></li>
             </ul>
         </aside>
@@ -27,7 +29,7 @@
                     <div class="profile-details">
                         <h2 id="userName">Name</h2>
                         <p id="userEmail">Email</p>
-                        <p id="userDepartment">Department</p> <!-- Changed from 'Course' to 'Department' -->
+                        <p id="userDepartment">Department</p>
                         <p id="userContact">Contact</p>
                     </div>
                 </div>
@@ -50,7 +52,7 @@
                 // Display user info on the profile page
                 document.getElementById('userName').textContent = loggedInUser.name;
                 document.getElementById('userEmail').textContent = loggedInUser.email;
-                document.getElementById('userDepartment').textContent = loggedInUser.department || 'No department information added'; // Changed from 'userCourse'
+                document.getElementById('userDepartment').textContent = loggedInUser.department || 'No department information added';
                 document.getElementById('userContact').textContent = loggedInUser.contact || 'No contact information added';
                 document.getElementById('userBiography').textContent = loggedInUser.biography || 'No biography added';
                 document.getElementById('userLinks').textContent = loggedInUser.links || 'No links added';

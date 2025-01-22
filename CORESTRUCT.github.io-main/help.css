@@ -14,7 +14,7 @@ body {
 .container {
     display: flex;
     height: 100vh;
-    overflow: hidden; /* Prevents scrollbars if the content is large */
+    overflow: hidden;
 }
 
 /* Sidebar Styling */
@@ -92,7 +92,7 @@ main {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 20px;
-    overflow-y: auto; /* Prevents content from overflowing */
+    overflow-y: auto;
 }
 
 header h2 {
@@ -106,7 +106,7 @@ header h2 {
 /* Centered Content Section */
 .help-section {
     width: 100%;
-    max-width: 800px; /* Max width for the content */
+    max-width: 800px;
     padding: 2rem;
     background-color: #fafafa;
     border-radius: 8px;
