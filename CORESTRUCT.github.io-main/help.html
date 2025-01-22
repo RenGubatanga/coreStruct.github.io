@@ -28,10 +28,7 @@
                         <img src="image/panda.png" alt="Help">
                         <h2>How can we help?</h2>
                         <p>Find answers to common questions</p>
-                        <div class="search-box">
-                            <input type="text" id="searchInput" placeholder="Search here" onkeyup="showSuggestions()">
-                        </div>
-                        <div id="suggestions" class="suggestions-box"></div>
+                        
                         <div class="links">
                             <a href="#" id="askQuestionLink">Ask your instructor a Question</a>
                             <a href="#">Report a Problem</a>
@@ -43,36 +40,6 @@
     </div>
 
     <script>
-        function showSuggestions() {
-            const searchInput = document.getElementById('searchInput');
-            const suggestionsDiv = document.getElementById('suggestions');
-
-            const mockSuggestions = [
-                "How to update profile?",
-                "How to upload files?",
-                "How to set notifications?",
-                "How to report a problem?"
-            ];
-
-            const searchText = searchInput.value.toLowerCase();
-            const filteredSuggestions = mockSuggestions.filter(suggestion => 
-                suggestion.toLowerCase().includes(searchText)
-            );
-
-            // Clear previous suggestions
-            suggestionsDiv.innerHTML = '';
-
-            // Show filtered suggestions
-            filteredSuggestions.forEach(suggestion => {
-                const suggestionDiv = document.createElement('div');
-                suggestionDiv.textContent = suggestion;
-                suggestionsDiv.appendChild(suggestionDiv);
-            });
-
-            // Display or hide suggestions
-            suggestionsDiv.style.display = filteredSuggestions.length > 0 ? 'block' : 'none';
-        }
-
         // Simulate asking a question
         document.getElementById('askQuestionLink').addEventListener('click', function(event) {
             event.preventDefault();

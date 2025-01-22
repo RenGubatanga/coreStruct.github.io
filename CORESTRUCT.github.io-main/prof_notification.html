@@ -39,7 +39,7 @@
         window.onload = function() {
             const professorQuestions = JSON.parse(localStorage.getItem('professorQuestions')) || [];
 
-            // If there is a new question (that hasn't been answered yet), show it
+            // Show the first unanswered question if available
             if (professorQuestions.length > 0 && !professorQuestions[0].answered) {
                 const question = professorQuestions[0].userQuestion;
                 document.getElementById('questionBox').innerHTML = `<p><strong>Question:</strong> ${question}</p>`;
@@ -53,23 +53,24 @@
             if (replyText) {
                 const professorQuestions = JSON.parse(localStorage.getItem('professorQuestions')) || [];
                 if (professorQuestions.length > 0) {
-                    professorQuestions[0].answered = true; // Mark question as answered
-                    professorQuestions[0].professorReply = replyText; // Save the professor's reply
+                    // Mark question as answered and save the professor's reply
+                    professorQuestions[0].answered = true;
+                    professorQuestions[0].professorReply = replyText;
                     localStorage.setItem('professorQuestions', JSON.stringify(professorQuestions));
 
-                    // Notify the user on the help page
+                    // Notify the student
                     alert('Reply sent! The user will be notified.');
 
-                    // Send the reply back to the help page (simulate)
+                    // Optionally, send the reply back to the student's history
                     const userQuestions = JSON.parse(localStorage.getItem('userQuestions')) || [];
-                    userQuestions[userQuestions.length - 1].professorReply = replyText; // Update the last question with the reply
+                    userQuestions[userQuestions.length - 1].professorReply = replyText; // Update the last question
                     localStorage.setItem('userQuestions', JSON.stringify(userQuestions));
 
                     // Clear the reply input field
                     document.getElementById('replyText').value = '';
 
-                    // Optionally, redirect back to help page or stay
-                    window.location.href = 'help.html';  // Redirect to help page
+                    // Optionally, you can refresh the page or show a message
+                    window.location.reload(); // Reload to update the question list
                 }
             } else {
                 alert('Please write a reply.');
